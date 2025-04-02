@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext,useRef } from "react";
+import { useState, useEffect, useContext, useRef } from "react";
 import axios from 'axios';
 import { Link, useLocation } from "react-router-dom";
 import "../assets/styles/style.css";
@@ -52,7 +52,7 @@ const Navbar = () => {
         const handleClickOutside = (event) => {
             const sidebar = document.querySelector('.category-btn');
             const toggleButton = document.querySelector('.drop-down');
-           
+
             if (sidebar && !sidebar.contains(event.target) && toggleButton && !toggleButton.contains(event.target)) {
                 setIsOpen(false);
             }
@@ -370,13 +370,13 @@ const Navbar = () => {
 
             {/* Mobile sidebar */}
             <div className="lg:hidden">
-                <div className="flex max-w-[1360px] gap-0 sm:gap-2 mx-auto items-center justify-between px-4 py-3">
+                <div className="flex max-w-[1360px] gap-2 sm:gap-2 mx-auto items-center justify-between px-4 py-3">
                     <button className="sidebar-toggle text-2xl" onClick={() => setIsOpensidebar(true)}>
                         <i className="fa-solid fa-bars"></i>
                     </button>
 
                     {/* search input  */}
-                    <div className="px-4 w-full py-2 border-t border-gray-200" >
+                    <div className="px-2 w-full py-2" >
                         <input type="search" placeholder="Search products..." className="w-full px-4 py-2 rounded-full border-2 border-gray-300 focus:border-yellow-500 outline-none" value={searchQuery} onChange={(e) => setSearchQuery(e.target.value)} />
                         {searchQuery && (
                             <div className="absolute top-full left-0 right-0 bg-white rounded-lg shadow-lg max-h-[200px] overflow-y-auto ">
@@ -397,6 +397,7 @@ const Navbar = () => {
                         )}
                     </div>
 
+
                     {/* profile user */}
                     <div className="flex items-center">
                         {user ? (
@@ -405,7 +406,7 @@ const Navbar = () => {
                                     <img
                                         src={userProfile?.profilePicture || logo}
                                         alt="Profile"
-                                        className="w-12 h-9 rounded-full object-cover"
+                                        className="w-16 h-9 rounded-full object-cover"
                                         onError={(e) => {
                                             e.target.onerror = null;
                                             e.target.src = logo;
@@ -492,11 +493,12 @@ const Navbar = () => {
 
 
                         {user?.role === 'admin' && (
+
                             <Link
                                 to="/Admin2"
                                 className={`text-md font-semibold rounded-full ${currentPath === "/Admin2" ? "text-yellow-600" : ""}`}
                             >
-                                <i className="fa-solid fa-table-columns p-2 rounded-full text-[24px]"></i>
+                                <i className="fa-solid fa-table-columns rounded-full text-[24px]"></i>
 
                             </Link>
                         )}
@@ -573,10 +575,10 @@ const Navbar = () => {
                             transition={{ type: "tween", duration: 0.3 }}
                             className="mobile-sidebar fixed top-0 left-0 w-[80%] max-w-sm h-full bg-white z-50 overflow-y-auto"
                         >
-                            <div className="flex justify-between items-center p-4 border-b">
-                                <div className="logo">
-                                    <img src={logo} alt="Logo" className="h-10" />
-                                </div>
+                            <div className="flex justify-between items-center py-1 pe-6 border-b">
+                                <Link to="/" className="logo" onClick={() => setIsOpensidebar(false)}>
+                                    <img src={logo} alt="" width="80px" />
+                                </Link>
                                 <button onClick={() => setIsOpensidebar(false)} className="text-2xl">
                                     <i className="fa-solid fa-xmark"></i>
                                 </button>
@@ -641,17 +643,29 @@ const Navbar = () => {
                                 </div>
                             ) : (
                                 // Login Button - Professional Look
-                                <Link
-                                    to="/Login"
+                              
+                                <div
+                                className="pb-2 border-b flex items-center gap-2 cursor-pointer"
+                                onClick={() => {
+                                    navigate("/Login");
+                                    setIsOpensidebar(false);
+                                }} 
+
+                              >
+                                <div className="">
+                                  <div
                                     className={`rounded-full shadow-md transition-all duration-300 ml-4 mt-4 ease-in-out transform ${
-                                        currentPath === "/Login"
-                                            ? "bg-yellow-600 text-white"
-                                            : "bg-white text-black border border-gray-300 hover:bg-yellow-600 hover:text-white"
-                                        }`}
+                                      location.pathname === "/Login"
+                                        ? "bg-yellow-600 text-white"
+                                        : "bg-white text-black border border-gray-300 hover:bg-yellow-600 hover:text-white"
+                                    }`}   
                                     onClick={() => setIsOpensidebar(false)}
-                                >
-                                    <FaUserCircle className="text-[28px] cursor-pointer" />
-                                </Link>
+                                  >
+                                    <FaUserCircle className="text-[28px]" />
+                                  </div>
+                                </div>
+                                <p className="font-semibold pt-3">Login</p>
+                              </div>
                             )}
 
 

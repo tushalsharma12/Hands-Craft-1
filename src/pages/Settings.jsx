@@ -134,7 +134,7 @@
         };
 
         return (
-            <div className="max-w-xl mx-auto p-8 bg-white shadow-lg rounded-xl my-10 border border-gray-200">
+            <div className="max-w-xl md:mx-auto p-8 bg-white shadow-lg rounded-xl md:my-10 my-4 mx-4 border border-gray-200">
                 <h2 className="text-3xl font-bold text-center text-gray-800 flex items-center justify-center gap-2">
                     <CheckCircle className="text-green-500" size={26} />
                     Manage Your Account

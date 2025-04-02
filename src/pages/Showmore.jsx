@@ -28,7 +28,7 @@ function Showmore() {
     if (loading) return <Loader />
 
     return (
-        <div >
+        <div className="px-2 md:px-0">
             <Slide heading="you may also like" products={products.filter(product => product.section === "today_big_deals")} showHeading={true} />
             <Slide products={products.filter(product => product.section === "DiningRounded1")} showHeading={false} />
             <Slide products={products.filter(product => product.section === "DiningRounded2")} showHeading={false} />

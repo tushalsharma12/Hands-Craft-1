@@ -24,9 +24,9 @@ const About = () => {
           </div>
         </div>
 
-        <div className="max-w-[1360px] mx-auto my-8 sm:my-12">
+        <div className="max-w-[1360px] mx-auto my-4 sm:my-12">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 sm:gap-10">
-            <motion.div {...motion_left_to_right} className="lg:col-span-6">
+            <motion.div {...motion_left_to_right} className="lg:col-span-6 px-3 md:px-0">
               <img 
                 src={img1} 
                 alt="Art Workshop" 

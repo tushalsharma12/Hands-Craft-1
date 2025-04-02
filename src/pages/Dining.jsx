@@ -34,7 +34,7 @@ function Dining() {
     }
 
     return (
-        <main className="">
+        <main className="md:px-0 px-2">
 
             <Rounded_2_with_heading products={products.filter(product => product.section === "DiningRounded1")} products2={products.filter(product => product.section === "DiningRounded2")} heading={`All Kitchen & Dining🍴`} heading2={"Elevate your kitchen with hands&craft handcrafted wooden accessories and dining décor."} />
             <Slide heading="Drinkware" products={products.filter(product => product.section === "Drinkware1")} showHeading={true} />

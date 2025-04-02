@@ -8,20 +8,31 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination ,Autoplay } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 const RoundedTitle = ({ heading, products = [], showHeading = true }) => {
 
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Mobile width check
+        
+            useEffect(() => {
+                const handleResize = () => {
+                    setIsMobile(window.innerWidth < 768);
+                };
+                window.addEventListener("resize", handleResize);
+                return () => window.removeEventListener("resize", handleResize);
+            }, []);
 
     return (
-        <div className="bg-gray-100 md:px-0 px-2 ">
+        <div className="bg-gray-100 md:px-0 px-2 rounded-xl">
             <div className="max-w-[1360px] mx-auto ">
                 <motion.section {...motion_bottom_to_top}
                     className="roundedhome lg:pb-8 md:pb-6 pb-4  pt-1 "
                 >
                     <div className="">
                         {showHeading && (
-                            <div className="flex justify-between gap-1 lg:mt-7 md:mt-5 mt-2  py-1 px-2">
+                            <div className="flex justify-between gap-1 lg:mt-7 md:mt-5 mt-2  py-1 ">
                                 <div className="">
                                     <h2>{heading}</h2>
                                 </div>
@@ -36,10 +47,8 @@ const RoundedTitle = ({ heading, products = [], showHeading = true }) => {
                             //     nextEl: ".custom-next",
                             //     prevEl: ".custom-prev",
                             // }}
-                            autoplay={{
-                                delay: 4000,
-                                disableOnInteraction: false,
-                              }}
+                            autoplay={isMobile ? false : { delay: 4000, disableOnInteraction: false }}
+
                             className="relative w-full"
                             breakpoints={{
                                 320: { slidesPerView: 2 },

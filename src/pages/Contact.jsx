@@ -29,15 +29,15 @@ const Contact = () => {
 
     return (
         <>
-            <section className="bg-gray-100 py-12">
+            <section className="bg-gray-100 md:py-12 py-6">
                 <div className="max-w-6xl mx-auto text-center">
-                    <h2 className="text-4xl font-bold text-gray-800">Get in Touch</h2>
-                    <p className="text-gray-600 mt-2">We&apos;d love to hear from you! Reach out to us with any inquiries.</p>
+                    <h2 className="text-2xl md:text-4xl font-bold text-gray-800">Get in Touch</h2>
+                    <p className="text-gray-600 mt-2 px-2">We&apos;d love to hear from you! Reach out to us with any inquiries.</p>
                 </div>
             </section>
 
-            <section className="max-w-6xl mx-auto px-6 lg:px-12 py-12 grid grid-cols-1 md:grid-cols-2 gap-12">
-                <motion.div {...motion_left_to_right} className="bg-white shadow-lg rounded-xl p-8">
+            <section className="max-w-6xl mx-auto px-4 lg:px-12 md:py-12 py-4 grid grid-cols-1 md:grid-cols-2 gap-12">
+                <motion.div {...motion_left_to_right} className="bg-white shadow-lg rounded-xl md:p-8 p-4">
                     <h3 className="text-2xl font-semibold text-gray-800">Contact Information</h3>
                     <p className="text-gray-600 mt-2">Feel free to reach out to us via phone, email, or visit our office.</p>
                     <div className="mt-6 space-y-4">
@@ -65,7 +65,7 @@ const Contact = () => {
                     </div>
                 </motion.div>
 
-                <motion.div {...motion_right_to_left} className="bg-white shadow-lg rounded-xl p-8">
+                <motion.div {...motion_right_to_left} className="bg-white shadow-lg rounded-xl md:p-8 p-4">
                     <h3 className="text-2xl font-semibold text-gray-800">Send Us a Message</h3>
                     <form onSubmit={handleSubmit} className="mt-6 space-y-4">
                         <input

@@ -68,7 +68,7 @@ const Profile = () => {
     if (loading) return <Loader />;
 
     return (
-        <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow-md max-w-lg mx-auto my-10">
+        <div className="bg-white border border-gray-200 p-6 rounded-2xl shadow-md max-w-lg md:my-12 mx-4 md:mx-auto my-4 ">
             <h2 className="text-3xl text-center text-gray-800 font-bold">Welcome, {user.name}!</h2>
             <div className="text-center mt-6">
                 <label className="cursor-pointer group relative">

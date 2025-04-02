@@ -1,5 +1,9 @@
 # Dependencies
 /node_modules
+/src/variables/rough.js
+/src/variables/rough.jsx
+
+
 
 # Production
 /dist
@@ -7,7 +11,7 @@
 
 # Environment variables
 .env
-.env.*
+
 
 # Logs
 logs

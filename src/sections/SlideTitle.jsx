@@ -8,10 +8,21 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 const SlideTitle = ({ heading, products = [], showHeading = true }) => {
 
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Mobile width check
+    
+        useEffect(() => {
+            const handleResize = () => {
+                setIsMobile(window.innerWidth < 768);
+            };
+            window.addEventListener("resize", handleResize);
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
 
     return (
         <div className="max-w-[1360px] mx-auto lg:my-7 md:my-5 my-3">
@@ -36,10 +47,8 @@ const SlideTitle = ({ heading, products = [], showHeading = true }) => {
                         //     nextEl: ".custom-next",
                         //     prevEl: ".custom-prev",
                         // }}
-                        autoplay={{
-                            delay: 3500,
-                            disableOnInteraction: false,
-                          }}
+                        autoplay={isMobile ? false : { delay: 3500, disableOnInteraction: false }}
+
                         className="relative w-full"
                         breakpoints={{
                             320: { slidesPerView: 2 },

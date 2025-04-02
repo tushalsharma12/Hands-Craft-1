@@ -8,16 +8,28 @@ import "../assets/styles/style.css";
 import PropTypes from "prop-types";
 import { motion } from "framer-motion";
 import { containerVariants, itemVariants_bottom } from "../variables/animation";
+import { useState, useEffect } from "react";
+
 
 const Rounded_2_with_heading = ({ products = [], products2 = [], heading, heading2 }) => {
     // Data split for two different Swipers
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Mobile width check
+    
+        useEffect(() => {
+            const handleResize = () => {
+                setIsMobile(window.innerWidth < 768);
+            };
+            window.addEventListener("resize", handleResize);
+            return () => window.removeEventListener("resize", handleResize);
+        }, []);
+
     return (
         // bg-gradient-to-b from-yellow-600 to-white 
         <section className="rounded_Dining ">
 
-            <div className="bg-gray-100 py-12">
+            <div className="bg-gray-100 md:py-12 py-6 md:px-0 px-2">
                 <div className="max-w-6xl mx-auto text-center">
-                    <h2 className="text-4xl font-bold text-gray-800">{heading}</h2>
+                    <h2 className="md:text-4xl text-2xl font-bold text-gray-800">{heading}</h2>
                     <p className="text-gray-600 mt-2">{heading2}</p>
                 </div>
             </div>
@@ -27,10 +39,8 @@ const Rounded_2_with_heading = ({ products = [], products2 = [], heading, headin
                 {/* First Swiper */}
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    autoplay={{
-                        delay: 3000,
-                        disableOnInteraction: false,
-                      }}
+                    autoplay={isMobile ? false : { delay: 3000, disableOnInteraction: false }}
+
                     spaceBetween={0}
                     slidesPerView={7}
                     navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}
@@ -56,10 +66,8 @@ const Rounded_2_with_heading = ({ products = [], products2 = [], heading, headin
                 {/* Second Swiper with different gifts */}
                 <Swiper
                     modules={[Navigation, Pagination, Autoplay]}
-                    autoplay={{
-                        delay: 4000,
-                        disableOnInteraction: false,
-                      }}
+                    autoplay={isMobile ? false : { delay: 4000, disableOnInteraction: false }}
+
                     spaceBetween={0}
                     slidesPerView={7}
                     navigation={{ nextEl: ".custom-next", prevEl: ".custom-prev" }}

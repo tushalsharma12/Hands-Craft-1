@@ -32,7 +32,7 @@ const CountdownTimer = () => {
   };
 
   return (
-    <div className=" p-4 rounded-lg text-xl font-bold">
+    <div className=" rounded-lg text-xs font-semibold">
       {formatTime(timeLeft)}
     </div>
   );

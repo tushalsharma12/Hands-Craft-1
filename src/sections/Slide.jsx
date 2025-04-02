@@ -9,20 +9,30 @@ import { Navigation, Pagination , Autoplay} from "swiper/modules";
 import {  motion } from "framer-motion";
 import { motion_bottom_to_top } from "../variables/animation";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 
 const Slide = ({ products = [], heading, showHeading = true }) => {
 
     const navigate = useNavigate();
+    const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Mobile width check
+
+    useEffect(() => {
+        const handleResize = () => {
+            setIsMobile(window.innerWidth < 768);
+        };
+        window.addEventListener("resize", handleResize);
+        return () => window.removeEventListener("resize", handleResize);
+    }, []);
+
 
     return (
-        <motion.section {...motion_bottom_to_top} className="today's bg-gray-100 lg:pb-7 md:pb-5 pb-3 md:px-0 px-2 ">
+        <motion.section {...motion_bottom_to_top} className="today's bg-gray-100 lg:pb-7 md:pb-5 pb-3 rounded-xl p-1">
             <div className="max-w-[1360px] mx-auto ">
                 {showHeading && (
-                    <div className="flex justify-between gap-1 lg:pt-7 md:pt-5 px-2 ">
-                        <div className="flex items-center ">
-                            <h2>{heading}</h2>
+                    <div className="flex justify-between py-2 lg:pt-7 md:pt-5 px-2 items-center ">
+                            <h2 className="md:text-2xl text-2xl font-semibold ">{heading}</h2>
                             <CountdownTimer />
-                        </div>
+
                     </div>
                 )}
 
@@ -34,10 +44,8 @@ const Slide = ({ products = [], heading, showHeading = true }) => {
                     //     nextEl: ".custom-next",
                     //     prevEl: ".custom-prev",
                     // }}
-                    autoplay={{
-                        delay: 5000,
-                        disableOnInteraction: false,
-                      }}
+                    autoplay={isMobile ? false : { delay: 5000, disableOnInteraction: false }}
+
                     className="relative w-full "
 
                     breakpoints={{

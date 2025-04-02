@@ -5,17 +5,29 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import { Navigation, Pagination , Autoplay } from "swiper/modules";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
+
 
 const RoundedHome = ({ products = [], heading }) => {
 
   const navigate = useNavigate();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768); // Mobile width check
+      
+          useEffect(() => {
+              const handleResize = () => {
+                  setIsMobile(window.innerWidth < 768);
+              };
+              window.addEventListener("resize", handleResize);
+              return () => window.removeEventListener("resize", handleResize);
+          }, []);
+  
 
   return (
     <motion.section {...motion_bottom_to_top}
       className="roundedhome lg:my-7 md:my-5 my-3"
     >
       <div className="max-w-screen-xl mx-auto text-center  lg:px-16 md:px-10 px-2 py-2">
-        <h2 className="md:text-2xl text-lg  font-semibold lg:my-3">
+        <h2 className="text-2xl  font-semibold lg:my-3 mb-2">
           {heading}
         </h2>
         {/* Discover products for every occasion */}
@@ -28,10 +40,8 @@ const RoundedHome = ({ products = [], heading }) => {
           //   nextEl: ".custom-next",
           //   prevEl: ".custom-prev",
           // }}
-          autoplay={{
-            delay: 3000,
-            disableOnInteraction: false,
-          }}
+          autoplay={isMobile ? false : { delay: 3000, disableOnInteraction: false }}
+
           className="relative w-full"
           breakpoints={{
             320: { slidesPerView: 2 },
