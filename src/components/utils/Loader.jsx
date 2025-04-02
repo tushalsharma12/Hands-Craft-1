@@ -1,12 +1,10 @@
 
 const Loader = () => {
     return (
-        <div className="fixed inset-0 flex items-center justify-center bg-white backdrop-blur-md z-50">
-            <div className="relative">
-                <div className="w-24 h-2 border-4 border-gray-300 border-t-yellow-600 rounded-full animate-spin"></div>
-                <div className="absolute inset-0 w-full h-full blur-md opacity-50 bg-yellow-600 rounded-full"></div>
+            <div className="flex justify-center items-center min-h-screen">
+                <div className="animate-spin rounded-full h-12 w-12 border-t-4 border-b-4 border-yellow-500"></div>
             </div>
-        </div>
+        
     );
 };
 
