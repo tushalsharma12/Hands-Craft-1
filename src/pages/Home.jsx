@@ -121,7 +121,7 @@ const Home = () => {
 
       <SlideTitle heading="New Arrivals" products={products.filter(product => product.section === "New Arrivals")} />
 <hr />
-      <section className="my-3 md:my-5 lg:my-7 max-w-[1360px] mx-auto">
+      <section className="my-5 mb-7 lg:my-7 max-w-[1360px] mx-auto">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col justify-center items-center space-y-3 text-center px-4">
             <p className="text-yellow-500 font-bold pacifico-regular text-lg sm:text-xl md:text-2xl lg:text-3xl w-full md:w-3/4">
@@ -188,7 +188,7 @@ const Home = () => {
 
       <motion.section  className="my-4 sm:my-6 lg:my-8 readmore">
   <div className="bg-gray-200 bg-opacity-60 p-4 sm:p-6 lg:p-8 rounded-xl max-w-screen-lg mx-auto">
-    <h1 className="text-lg sm:text-xl lg:text-2xl font-medium mb-4 ">
+    <h1 className="text-lg sm:text-xl lg:text-2xl font-medium mb-2 ">
       The Luxurious Way to Decorate Your Home
     </h1>
     <div className="space-y-4 sm:space-y-6">

@@ -30,7 +30,7 @@ const Slide = ({ products = [], heading, showHeading = true }) => {
             <div className="max-w-[1360px] mx-auto ">
                 {showHeading && (
                     <div className="flex justify-between py-2 lg:pt-7 md:pt-5 px-2 items-center ">
-                            <h2 className="md:text-2xl text-2xl font-semibold ">{heading}</h2>
+                            <h2 className=" text-2xl font-semibold ">{heading}</h2>
                             <CountdownTimer />
 
                     </div>

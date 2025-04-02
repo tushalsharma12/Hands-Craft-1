@@ -33,9 +33,7 @@ const SlideTitle = ({ heading, products = [], showHeading = true }) => {
                 <div className="">
                     {showHeading && (
                         <div className="flex justify-between gap-1 lg:mt-7 mt-2  py-1 px-2 ">
-                            <div className="">
-                                <h2>{heading}</h2>
-                            </div>
+                                <h2 className=" text-2xl font-semibold ">{heading}</h2>
                         </div>
                     )}
 
